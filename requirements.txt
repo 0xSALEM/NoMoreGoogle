@@ -1,4 +1,3 @@
 python-telegram-bot==12.8
 openai
 python-dotenv
-dotenv
