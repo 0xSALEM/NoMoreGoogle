@@ -2,7 +2,7 @@ import os
 import telegram
 import openai
 from dotenv import load_dotenv
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters
 
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
@@ -33,8 +33,8 @@ def unknown(update, context):
 # set up handlers
 dispatcher = updater.dispatcher
 dispatcher.add_handler(CommandHandler("start", start))
-dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, generate_response))
-dispatcher.add_handler(MessageHandler(Filters.command, unknown))
+dispatcher.add_handler(MessageHandler(filters.text & ~filters.command, generate_response))
+dispatcher.add_handler(MessageHandler(filters.command, unknown))
 
 def main():
     """Start the bot."""
